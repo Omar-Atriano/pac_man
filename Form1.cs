@@ -14,7 +14,8 @@ namespace pac_man
     public partial class Form1 : Form
     {
         static Graphics g;
-        bool hold, right, left, up, down = true;
+        bool hold, right, left, up, down = false;
+        //bool up, down = false;
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +26,18 @@ namespace pac_man
         {
             level1();
 
+        }
+
+        private void TIMER_Tick(object sender, EventArgs e)
+        {
+            if (left == true && hold == false)
+                pacman.Left -= 1;
+            else if(right == true && hold == false)
+                pacman.Left += 1;
+            else if (up == true && hold == false)
+                pacman.Top -= 1;
+            else if (down == true && hold == false)
+                pacman.Top += 1;
         }
 
         public void level1()
@@ -56,7 +69,7 @@ namespace pac_man
                         g.FillRectangle(new SolidBrush(Color.Black), x * 10, y * 10, 10, 10);
 
                     //guía panel cuadrado para código 
-                    g.DrawRectangle(Pens.Gray, x * 10, y * 10, 10, 10);
+                    //g.DrawRectangle(Pens.Gray, x * 10, y * 10, 10, 10);
                 }
             }
 
@@ -70,7 +83,6 @@ namespace pac_man
                 right = true;
                 hold = false;
                 pacman.Image = MyResource.pac_man_d;
-                pacman.Left +=5;
             }
             else if (e.KeyData == Keys.Left & hold)
             {

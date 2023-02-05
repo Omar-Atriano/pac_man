@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pacman = new System.Windows.Forms.PictureBox();
             this.map = new System.Windows.Forms.PictureBox();
+            this.TIMER = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pacman)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.map)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +55,12 @@
             this.map.TabIndex = 1;
             this.map.TabStop = false;
             // 
+            // TIMER
+            // 
+            this.TIMER.Enabled = true;
+            this.TIMER.Interval = 10;
+            this.TIMER.Tick += new System.EventHandler(this.TIMER_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -75,6 +83,7 @@
 
         private System.Windows.Forms.PictureBox pacman;
         private System.Windows.Forms.PictureBox map;
+        private System.Windows.Forms.Timer TIMER;
     }
 }
 
